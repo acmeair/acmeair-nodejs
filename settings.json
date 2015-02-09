@@ -1,0 +1,27 @@
+{
+	"port":9080,
+	"contextRoot": "/rest/api",
+		
+	"authservice_port": 9443,
+	"authContextRoot": "/acmeair-auth-service/rest/api",
+		
+	"mongoHost" : "127.0.0.1",
+	"mongoPort" : 27017,
+	"mongoConnectionPoolSize": 10,
+
+	"cloudant_host": "xxx",
+	"cloudant_username": "yyy",
+	"cloudant_password":"zzz",
+	"cloudant_httpclient.maxTotal":200,
+	"cloudant_httpclient.maxPerRoute":100,
+	"cloudant_httpclient.soTimeout":5000,
+	"cloudant_httpclient.connectionTimeout":5000,
+
+	"useFlightDataRelatedCaching" : true,
+	
+	"flightDataCacheTTL" :  1200000,
+	"flightDataCacheMaxSize" : 100000,
+	
+	"loggerLevel" : "INFO",
+	"useDevLogger" : true     
+}
