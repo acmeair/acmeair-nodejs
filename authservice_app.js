@@ -66,15 +66,16 @@ initDB();
 
 function initDB(){
     if (initialized ) return;
-		routes.initializeDatabaseConnections(function(error) {
+	routes.initializeDatabaseConnections(function(error) {
 			if (error) {
 				logger.error('Error connecting to database - exiting process: '+ error);
 				// Do not stop the process for debug in container service
 				//process.exit(1); 
 			}else
+			{
 				initialized =true;
-
-			logger.info("Initialized database connections");
+				logger.info("Initialized database connections");
+			}
 			startServer();
 	});
 }
@@ -93,35 +94,59 @@ function checkStatus(req, res){
 
 function createToken(req, res){
 	logger.debug('create token by user ' + req.params.user);
-	routes.createSessionInDB(req.params.user, function(error, cs){
-	if (error){
-	 	res.status(404).send(error);
+	if (!initialized)
+    {
+		logger.info("please wait for db connection initialized then trigger again.");
+		initDB();
+		res.send(403);
+	}else
+	{
+		routes.createSessionInDB(req.params.user, function(error, cs){
+		if (error){
+		 	res.status(404).send(error);
+		}
+		else{
+			res.send(JSON.stringify(cs));
+		}
+	    })
 	}
-	else{
-		res.send(JSON.stringify(cs));
-	}
-    })
 }
 
 function validateToken(req, res){
 	logger.debug('validate token ' + req.params.tokenid);
-	routes.validateSessionInDB(req.params.tokenid, function(error, cs){
-     if (error){
-	 	res.status(404).send(error);
+	if (!initialized)
+    {
+		logger.info("please wait for db connection initialized then trigger again.");
+		initDB();
+		res.send(403);
+	}else
+	{
+		routes.validateSessionInDB(req.params.tokenid, function(error, cs){
+	     if (error){
+		 	res.status(404).send(error);
+		}
+		else{
+			 res.send(JSON.stringify(cs));
+		}
+	    })
 	}
-	else{
-		 res.send(JSON.stringify(cs));
-	}
-    })
 }
 
 function invalidateToken(req, res){
 	logger.debug('invalidate token ' + req.params.tokenid);
-	routes.invalidateSessionInDB(req.params.tokenid, function(error){
-	if (error){
-	 	res.status(404).send(error);
+	if (!initialized)
+    {
+		logger.info("please wait for db connection initialized then trigger again.");
+		initDB();
+		res.send(403);
+	}else
+	{
+		routes.invalidateSessionInDB(req.params.tokenid, function(error){
+		if (error){
+		 	res.status(404).send(error);
+		}
+		else res.sendStatus(200);
+	    })
 	}
-	else res.sendStatus(200);
-    })
 }
 

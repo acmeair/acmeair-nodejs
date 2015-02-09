@@ -29,9 +29,9 @@ Assume Docker daemon is started.
 	docker run -d -P --name acmeair_web_003 -e APP_NAME=authservice_app.js --link mongo_001:mongo acmeair/web 
 	
 	docker ps
-		to get mapped port for 9443 , e.g. 49183
+		to get mapped port for 9443 , e.g. 49187
 		
-	docker run -d -P --name acmeair_web_004 -e AUTH_SERVICE=192.168.59.103:49183 --link mongo_001:mongo acmeair/web 
+	docker run -d -P --name acmeair_web_004 -e AUTH_SERVICE=192.168.59.103:49187 --link mongo_001:mongo acmeair/web 
 
 	or use the MONGO_URL location as above
 
