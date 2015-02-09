@@ -7,22 +7,11 @@
 * MongoDB 
 * Cloudant
 
-#### Note:
-
-* Set environment variable dbtype to mongo or cloudant to determine which dbtype to use. Default dbtype is mongo. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
-* All database configuration is defined in settings.json. When running on Bluemix, datasource url will be read from service binding information.
-* For CLoudant, you need to follow document/DDL/cloudant.ddl to create database and define search index.
-* To add new datasource types, create a folder under dataaccess with the new dbtype name. Look at current implementation for reference.
-
 
 ### Application Mode
 
 * Monolithic 
 * Micro-Service
-
-#### Note:
-
-* Use AUTH_SERVICE=host name:port to point to the authentication micro-service.
 
 
 ### Application Run Platforms
@@ -66,3 +55,15 @@
 		update account info
 	Logout	
 	
+## Note:
+
+### How dbtype is determined
+
+* Set environment variable dbtype to mongo or cloudant to determine which dbtype to use. The default mongo. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+* All database configuration is defined in settings.json. When running on Bluemix, datasource url will be read from service binding information.
+* For CLoudant, you need to follow document/DDL/cloudant.ddl to create database and define search index.
+* To add new datasource types, create a folder under dataaccess with the new dbtype name. Look at current implementation for reference.
+
+### How to switch to different application mode
+
+* set environment variable AUTH_SERVICE=host name:port, to point to the authentication micro-service. The default mode is Monolithic.
