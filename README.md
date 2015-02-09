@@ -7,7 +7,7 @@
 * MongoDB 
 * Cloudant
 
-Use environment virable dbtype=<mongo or cloudant> to determine which data type to use. 
+Use environment virable dbtype=/<mongo or cloudant/> to determine which data type to use. 
 It is automactially discovered when running on Bluemix from the service the application is bound to.
 
 ### Application Flovors
@@ -15,7 +15,7 @@ It is automactially discovered when running on Bluemix from the service the appl
 * Monolithic 
 * Micro-Service
 
-Use authService=<host name:port> to point to the autentication micro-service.
+Use authService=/<host name:port/> to point to the autentication micro-service.
 
 
 ## How to get started
@@ -38,7 +38,7 @@ Use authService=<host name:port> to point to the autentication micro-service.
 
 	http://localhost:9080/
 	Load Database 
-		preload 10k customers uid[0..9999]@email.com:password, 5 days' flights.  [Defined in] (loader/loader-settings.json)
+		preload 10k customers uid[0..9999]@email.com:password, 5 days' flights.  Defined in loader/loader-settings.json
 	Login
 	Flights
 		such as Singapore to HongKong or Paris to Moscow 
@@ -47,3 +47,9 @@ Use authService=<host name:port> to point to the autentication micro-service.
 	Account
 		update account info
 	Logout	
+	
+## Run on Other Platform
+
+* [BLuemix] (README_Bluemix.md)
+* [Bluemix Container Service (README_Bluemix_Container.md)
+* [Docker] (README_Docker.md)
