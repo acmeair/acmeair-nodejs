@@ -20,8 +20,8 @@ Use authService=host name:port to point to the autentication micro-service.
 ### Application Run Platforms
 
 * [Bluemix] (README_Bluemix.md)
-* [Bluemix Container Service] (README_Bluemix_Container.md)
 * [Docker] (README_Docker.md)
+* [Bluemix Container Service] (README_Bluemix_Container.md)
 
 ## How to get started
 
