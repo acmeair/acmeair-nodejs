@@ -29,7 +29,7 @@ var host = (process.env.VCAP_APP_HOST || 'localhost');
 
 logger.info("host:port=="+host+":"+port);
 
-var authServiceLocation= process.env.authService;
+var authServiceLocation= process.env.AUTH_SERVICE;
 
 var authService;
 if (authServiceLocation ) // assuming it is the location of authservice 

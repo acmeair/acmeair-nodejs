@@ -31,7 +31,7 @@ Use authService=host name:port to point to the autentication micro-service.
 ### Run Micro-Service on Local
 
 	node authservice-app.js
-	set authService=localhost:9443
+	set AUTH_SERVICE=localhost:9443 or export AUTH_SERVICE=localhost:9443
 	node app.js
 	
 ### Access Application 
@@ -50,6 +50,6 @@ Use authService=host name:port to point to the autentication micro-service.
 	
 ## Run on Other Platform
 
-* [BLuemix] (README_Bluemix.md)
+* [Bluemix] (README_Bluemix.md)
 * [Bluemix Container Service] (README_Bluemix_Container.md)
 * [Docker] (README_Docker.md)

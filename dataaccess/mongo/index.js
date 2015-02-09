@@ -57,13 +57,13 @@ module.exports = function (settings) {
 		}
 
 		// The section is for docker integration using link
-		if (mongo ==null && process.env.DB_PORT!=null) {
-	        logger.info(process.env.DB_PORT);
-	        logger.info(process.env.DB_PORT_27017_TCP_ADDR);
-	        logger.info(process.env.DB_PORT_27017_TCP_PORT);
+		if (mongo ==null && process.env.MONGO_PORT!=null) {
+	        logger.info(process.env.MONGO_PORT);
+	        logger.info(process.env.MONGO_PORT_27017_TCP_ADDR);
+	        logger.info(process.env.MONGO_PORT_27017_TCP_PORT);
 		    mongo = {
-			    "hostname":  process.env.DB_PORT_27017_TCP_ADDR,
-			    "port": process.env.DB_PORT_27017_TCP_PORT,
+			    "hostname":  process.env.MONGO_PORT_27017_TCP_ADDR,
+			    "port": process.env.MONGO_PORT_27017_TCP_PORT,
 			    "username":"",
 			    "password":"",
 			    "name":"",
@@ -83,10 +83,10 @@ module.exports = function (settings) {
 		}
 		
 		var generate_mongo_url = function(obj){
-			if (process.env.MONGO_URI)
+			if (process.env.MONGO_URL)
 			{
-			  logger.info("mongo: %j",process.env.MONGOLAB_URI);
-			  return process.env.MONGO_URI;
+			  logger.info("mongo: %j",process.env.MONGO_URL);
+			  return process.env.MONGO_URL;
 			}
 	        if (obj['uri']!=null)
 	        {
