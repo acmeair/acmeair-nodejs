@@ -9,8 +9,8 @@
 
 #### Note:
 
-* Set environment variable dbtype to mongo or cloudant to determine which data type to use. Default is mongo, except when running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
-* All database configuration is defined in settings.json. 
+* Set environment variable dbtype to mongo or cloudant to determine which data type to use. Default datatype is mongo, except when running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+* All database configuration is defined in settings.json. When running on Bluemix, datasource url will be read from service binding information.
 * For CLoudant, you need to follow document/DDL/cloudant.ddl to create database and define search index.
 * To extend with new datasource types, create a folder under dataaccess with the new dbtype name. Look at current implementation for details
 
