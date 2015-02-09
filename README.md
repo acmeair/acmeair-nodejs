@@ -7,7 +7,7 @@
 * MongoDB 
 * Cloudant
 
-Use environment virable dbtype=/<mongo or cloudant/> to determine which data type to use. 
+Use environment virable dbtype=\<mongo or cloudant\> to determine which data type to use. 
 It is automactially discovered when running on Bluemix from the service the application is bound to.
 
 ### Application Flovors
@@ -15,7 +15,7 @@ It is automactially discovered when running on Bluemix from the service the appl
 * Monolithic 
 * Micro-Service
 
-Use authService=/<host name:port/> to point to the autentication micro-service.
+Use authService=\<host name:port\> to point to the autentication micro-service.
 
 
 ## How to get started
