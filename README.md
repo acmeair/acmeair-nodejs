@@ -8,7 +8,7 @@
 * Cloudant
 
 Use environment virable dbtype=mongo or dbtype=cloudant to determine which data type to use. 
-It is automactially discovered when running on Bluemix from the service the application is bound to.
+When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 
 ### Application Flavors
 
