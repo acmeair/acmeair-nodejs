@@ -17,6 +17,11 @@ When running on Bluemix, dbtype is automactially discovered from the service the
 
 Use authService=host name:port to point to the autentication micro-service.
 
+### Application Run Platforms
+
+* [Bluemix] (README_Bluemix.md)
+* [Bluemix Container Service] (README_Bluemix_Container.md)
+* [Docker] (README_Docker.md)
 
 ## How to get started
 
@@ -48,8 +53,3 @@ Use authService=host name:port to point to the autentication micro-service.
 		update account info
 	Logout	
 	
-## Run on Other Platform
-
-* [Bluemix] (README_Bluemix.md)
-* [Bluemix Container Service] (README_Bluemix_Container.md)
-* [Docker] (README_Docker.md)
