@@ -7,7 +7,7 @@
 * MongoDB 
 * Cloudant
 
-#### Note
+#### Note:
 
 * Use environment virable dbtype=mongo or dbtype=cloudant to determine which data type to use. 
 * When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
@@ -20,7 +20,9 @@
 * Monolithic 
 * Micro-Service
 
-Use AUTH_SERVICE=host name:port to point to the authentication micro-service.
+#### Note:
+
+* Use AUTH_SERVICE=host name:port to point to the authentication micro-service.
 
 
 ### Application Run Platforms

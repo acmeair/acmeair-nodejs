@@ -19,7 +19,9 @@
 	docker push registry-ice.ng.bluemix.net/acmeair/mongo
 
 
-### Start docker containers using ice (please see instructions of the container service page on how to install ice-cli)
+### Start docker containers using ice 
+
+please see instructions of the container service page on how to install ice-cli
 
 	ice login -k <API key> -H https://api-ice.ng.bluemix.net/v1.0/containers -R registry-ice.ng.bluemix.net
 	

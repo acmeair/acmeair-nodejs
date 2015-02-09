@@ -15,7 +15,7 @@ Assume Docker daemon is started.
 	docker build -t acmeair/web .
 	
 
-#### Monolithic
+#### Run Acmeair Container in Monolithic
 
 	docker run -d -P --name acmeair_web_001 --link mongo_001:mongo acmeair/web 
 	
@@ -24,7 +24,7 @@ Assume Docker daemon is started.
 	docker run -d -P --name acmeair_web_002 -e MONGO_URL=mongodb://192.168.59.103:49177/acmeair acmeair/web 
 	
 		
-#### Micro-Service
+#### Run Acmeair Containers in Micro-Service
 
 	docker run -d -P --name acmeair_web_003 -e APP_NAME=authservice_app.js --link mongo_001:mongo acmeair/web 
 	
@@ -41,7 +41,7 @@ Assume Docker daemon is started.
 	docker ps
 		get the mapped port for 9080 to get the application url. e.g. http://192.168.59.103:49178
 
-#### Note
+#### Note:
 
 * For Cloudant, you can use CLOUDANT_URL for datasource location
 
