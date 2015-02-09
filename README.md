@@ -15,7 +15,7 @@
 * To extend with new datasources types, create a folder under dataaccess. Look at current implementation for details
 
 
-### Application Flavors
+### Application Mode
 
 * Monolithic 
 * Micro-Service
@@ -40,12 +40,12 @@
 	npm install
 
 
-### Run Monolithic on Local
+### Run Acmeair in Monolithic on Local
 
 	node app.js
 		
 		
-### Run Micro-Service on Local
+### Run Acmeair in Micro-Service on Local
 
 	node authservice-app.js
 	set AUTH_SERVICE=localhost:9443 or export AUTH_SERVICE=localhost:9443
