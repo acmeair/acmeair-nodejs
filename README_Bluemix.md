@@ -16,11 +16,11 @@
 
 #### Create any one of the services
 	   
-* Mongo: 
+Mongo: 
 
 	cf create-service mongodb 100 acmeairMongo
    			
-* Cloudant:
+Cloudant:
 
 	cf create-service cloudantNoSQLDB Shared acmeairCL
 
