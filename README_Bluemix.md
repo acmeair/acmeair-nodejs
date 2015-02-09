@@ -1,6 +1,6 @@
 ## Acmeair NodeJS on Bluemix 
 
-* Assume you have access to [Bluemix](https://console.ng.bluemix.net). 
+Assume you have access to [Bluemix](https://console.ng.bluemix.net). 
 
 	cf api api.ng.bluemix.net
 	
