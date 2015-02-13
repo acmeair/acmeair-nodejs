@@ -5,7 +5,7 @@
 
 	The service defines <API key> and Registry URL, e.g: registry-ice.ng.bluemix.net/acmeair. 
 
-* Assume you have created  Acmeair Image by [following] (README_Docker.md)
+* Assume you have created  Acmeair Image by [instructions] (README_Docker.md)
 
 
 ###  Register your docker image to the service registry url 
