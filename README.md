@@ -9,11 +9,11 @@
 
 ### Datastore Choices
 
-Environment variable dbtype is used to determine the datastore choice. See under "More on datastore configuration".
+Environment variable dbtype is used to determine the datastore choice. See under "More on datastore".
 
 datastore | dbtype value | Meaning
 --- | --- | --- 
-[MongoDB](https://www.mongodb.org/downloads) | mongo | The default choice
+[MongoDB](https://www.mongodb.org/downloads) | mongo | The default choice. Assume started on localhost:27017
 [Cloudant](https://cloudant.com) | cloudant | 
 
 
@@ -36,10 +36,11 @@ Micro-Service | host:port | Main NodeJS application delegates to authorization s
 
 ## How to get started
 
+Assume MongoDB started on localhost:27017
+
 ### Resolve module dependencies
 
 	npm install
-
 
 ### Run Acmeair in Monolithic on Local
 
@@ -69,20 +70,55 @@ Micro-Service | host:port | Main NodeJS application delegates to authorization s
 	
 	
 	
-## More on datastore configuration
+## More on datastore
 
 ### How dbtype is determined
 
 * Set environment variable dbtype to mongo or cloudant to determine which dbtype to use. The default mongo. 
 * When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 
-### The datastore configuration
 
-* All default datastore configuration is defined in settings.json.
+### Datastore Configuration 
+
+#### Configuration for runtime
+
+Default values are defined [here](settings.json)
+
+Name | Default | Meaning
+--- |:---:| ---
+mongoHost | 127.0.0.1 | MongoDB host ip
+mongoPort | 27017 | MongoDB port
+mongoConnectionPoolSize | 10 | MongoDB connection pool size
+cloudant_host| | Cloudant database url 
+cloudant_username | | Cloudant database username/API key
+cloudant_password | | Cloudant database password
+cloudant_httpclient.maxTotal | 200 | Cloudant http client max connections
+cloudant_httpclient.maxPerRoute | 100 | Cloudant http client connections per route
+cloudant_httpclient.soTimeout | 5000 | Cloudant http client socket timeout
+cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection timeout
+
 * When running on Bluemix, datasource url will be read from bound service information.
-* For CLoudant, you need to follow document/DDL/cloudant.ddl to create database and define search index.
+* For CLoudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
+
+#### Configuration for load 
+
+Default values are defined [here](loader/loader-settings.json)
+
+Name | Default | Meaning
+--- |:---:| ---
+MAX_CUSTOMERS | 10000 |  number of customers
+MAX_DAYS_TO_SCHEDULE_FLIGHTS | 5 | max number of days to schedule flights
+MAX_FLIGHTS_PER_DAY | 1 | max flights per day
+
 
 ### How to extend with more datasource types
 
 * Create a folder under dataaccess with the new dbtype name. Look at current implementation for reference.
 
+
+### Data consistency with Acmeair Java
+
+The data format is NOT the same as Acmeair Java. The impact:
+
+* You can not share database with Acmeair Java. 
+* When drive [acmeair workload](ttps://github.com/acmeair/acmeair/wiki/jMeter-Workload-Instructions), you need follow the instruction to use -DusePureIDs=true when starting jmeter.
