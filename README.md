@@ -78,9 +78,7 @@ Assume MongoDB started on localhost:27017
 * When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 
 
-### Datastore Configuration 
-
-#### Configuration for runtime
+### Datastore Configuration for runtime
 
 Default values are defined [here](settings.json)
 
@@ -100,7 +98,7 @@ cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection t
 * When running on Bluemix, datasource url will be read from bound service information.
 * For CLoudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
 
-#### Configuration for load 
+### Configuration for preload datastore
 
 Default values are defined [here](loader/loader-settings.json)
 
