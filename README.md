@@ -21,8 +21,13 @@ Environment variable dbtype is used to determine the datastore choice. MongoDB i
 
 Environment variable AUTH_SERVICE is use to determine when Micro-Service is used. Default is Monolitic. See under "More on configurations".
 
-* Monolithic: One NodeJS application. The default mode.
-* Micro-Service: Main NodeJS application delegates to authorization service NodeJS application hosted on host:port, defined in AUTH_SERVICE
+#### Monolithic 
+
+One NodeJS application. The default mode.
+
+#### Micro-Service
+
+Main NodeJS application delegates to authorization service NodeJS application hosted on host:port, defined in AUTH_SERVICE
 
 
 ### Application Run Platforms
