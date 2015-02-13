@@ -6,6 +6,7 @@
 
 * [NodeJs](http://nodejs.org/download/)
 
+
 ### Datastore Choices
 
 Environment variable dbtype is used to determine the datastore choice. See under "More on datastore configuration".
@@ -15,12 +16,16 @@ datastore | dbtype value | is default
 [MongoDB](https://www.mongodb.org/downloads) | mongo | yes
 [Cloudant](https://cloudant.com) | cloudant | 
 
+
 ### Application Mode
 
-* Monolithic 
-  One NodeJS application connects to backend datastore. The default mode.
-* Micro-Service
-  Main NodeJS application , delegate authetication to the authorization service NodeJS application. Both connect to backedn datastore. Use AUTH_SERVICE environment variable to point to your authorization service host and port.
+#### Monolithic 
+
+One NodeJS application connects to backend datastore. The default mode.
+
+#### Micro-Service
+
+Main NodeJS application , delegate authetication to the authorization service NodeJS application. Both connect to backedn datastore. Use AUTH_SERVICE environment variable to point to your authorization service host and port.
 
 
 ### Application Run Platforms
@@ -28,7 +33,6 @@ datastore | dbtype value | is default
 * [Bluemix] (README_Bluemix.md)
 * [Docker] (README_Docker.md)
 * [Bluemix Container Service] (README_Bluemix_Container.md)
-
 
 
 ## How to get started
