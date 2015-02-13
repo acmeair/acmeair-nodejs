@@ -101,7 +101,7 @@ cloudant_httpclient.soTimeout | 5000 | Cloudant http client socket timeout
 cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection timeout
 
 * When running on Bluemix, datasource url will be read from bound service information.
-* For Cloudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
+* For Cloudant, you need to [follow instruction here](document/DDL/cloudant.ddl) to create database and define search index.
 
 
 ### Configuration for Datastore Preload
@@ -114,6 +114,8 @@ MAX_CUSTOMERS | 10000 |  number of customers
 MAX_DAYS_TO_SCHEDULE_FLIGHTS | 5 | max number of days to schedule flights
 MAX_FLIGHTS_PER_DAY | 1 | max flights per day
 
+
+## Other Topics
 
 ### How to extend with more datasource types
 
