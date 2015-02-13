@@ -24,7 +24,7 @@ Environment variable AUTH_Service is use to determine when Micro-Service is used
 application mode | AUTH_Service value | Meaning
 --- | --- | --- 
 Monolithic | | One NodeJS application connects to backend datastore. The default mode.
-Micro-Service | <host:port> | Main NodeJS application delegates to authorization service NodeJS application hosted on <host:port> 
+Micro-Service | host:port | Main NodeJS application delegates to authorization service NodeJS application hosted on host:port
 
 
 ### Application Run Platforms
