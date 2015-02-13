@@ -4,7 +4,7 @@
 
 ### Runtime Environment
 
-* [NodeJs](http://nodejs.org/download/)
+[NodeJs](http://nodejs.org/download/)
 
 
 ### Datastore Choices
