@@ -25,7 +25,8 @@ datastore | dbtype value | is default
 
 #### Micro-Service
 
-* Main NodeJS application , delegate authorization logic to the authorization service NodeJS application through AUTH_SERVICE environment variable which points to the service host and port.
+* Main NodeJS application which delegates authorization logic to the authorization service NodeJS application. 
+* Use AUTH_SERVICE environment variable to point to the service host and port.
 * Both applications connect to backend datastore. 
 
 
