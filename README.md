@@ -8,8 +8,11 @@
 
 ### Datastore Choices
 
-* [MongoDB](https://www.mongodb.org/downloads) 
-* [Cloudant](https://cloudant.com)
+Environment variable dbtype is used to determine the datastore choice.
+
+datastore | dbtype value | is default 
+[MongoDB](https://www.mongodb.org/downloads) | mongo | yes
+[Cloudant](https://cloudant.com) | cloudant | 
 
   Environment variable dbtype is used to determine the datastore choice. The default is mongo for MongoDB. Use dbtype=cloudant to choose cloudant. See more under "More on datastore configuration".
 
