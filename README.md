@@ -83,7 +83,7 @@ dbtype | mongo | You can switch betweeen mongo and cloudant for datastore choice
 AUTH_SERVICE |  | By default, there is only one main NodeJS application for all logics. When defined, in the format of host:port, it enables Micro-Service mode, main NodeJS application delegates to authorization service NodeJS application hosted on host:port. 
 
 
-### Datastore Configuration for runtime
+### Datastore Configuration for Runtime
 
 Default values are defined [here](settings.json)
 
@@ -104,7 +104,7 @@ cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection t
 * For CLoudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
 
 
-### Configuration for preload datastore
+### Configuration for Datastore Preload
 
 Default values are defined [here](loader/loader-settings.json)
 
