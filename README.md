@@ -21,11 +21,12 @@ datastore | dbtype value | is default
 
 #### Monolithic 
 
-One NodeJS application connects to backend datastore. The default mode.
+* One NodeJS application connects to backend datastore. The default mode.
 
 #### Micro-Service
 
-Main NodeJS application , delegate authetication to the authorization service NodeJS application. Both connect to backedn datastore. Use AUTH_SERVICE environment variable to point to your authorization service host and port.
+* Main NodeJS application , delegate authorization logic to the authorization service NodeJS application through AUTH_SERVICE environment variable which points to the service host and port.
+* Both applications connect to backend datastore. 
 
 
 ### Application Run Platforms
