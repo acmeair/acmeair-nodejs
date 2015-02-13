@@ -8,13 +8,12 @@
 
 ### Datastore Choices
 
-Environment variable dbtype is used to determine the datastore choice.
+Environment variable dbtype is used to determine the datastore choice. See under "More on datastore configuration".
 
 datastore | dbtype value | is default 
+--- | --- | --- |
 [MongoDB](https://www.mongodb.org/downloads) | mongo | yes
 [Cloudant](https://cloudant.com) | cloudant | 
-
-  Environment variable dbtype is used to determine the datastore choice. The default is mongo for MongoDB. Use dbtype=cloudant to choose cloudant. See more under "More on datastore configuration".
 
 ### Application Mode
 
