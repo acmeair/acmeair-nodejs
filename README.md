@@ -101,7 +101,7 @@ cloudant_httpclient.soTimeout | 5000 | Cloudant http client socket timeout
 cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection timeout
 
 * When running on Bluemix, datasource url will be read from bound service information.
-* For CLoudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
+* For Cloudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
 
 
 ### Configuration for Datastore Preload
