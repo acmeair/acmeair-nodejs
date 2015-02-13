@@ -127,4 +127,4 @@ MAX_FLIGHTS_PER_DAY | 1 | max flights per day
 The data format is NOT the same as Acmeair Java. The impact:
 
 * You can not share database with Acmeair Java. 
-* When drive [acmeair workload](ttps://github.com/acmeair/acmeair/wiki/jMeter-Workload-Instructions), you need follow the instruction to use -DusePureIDs=true when starting jmeter.
+* When drive acmeair workload, you need follow the [instruction](https://github.com/acmeair/acmeair/wiki/jMeter-Workload-Instructions) to use -DusePureIDs=true when starting jmeter.
