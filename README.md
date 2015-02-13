@@ -2,16 +2,23 @@
 
 ## Content
 
-### Datasource Choices
+### Runtime Environment
 
-* MongoDB 
-* Cloudant
+* [NodeJs](http://nodejs.org/download/)
 
+### Datastore Choices
+
+* [MongoDB](https://www.mongodb.org/downloads) 
+* [Cloudant](https://cloudant.com)
+
+  Environment variable dbtype is used to determine the datastore choice. The default is mongo for MongoDB. Use dbtype=cloudant to choose cloudant. See more under "More on datastore configuration".
 
 ### Application Mode
 
 * Monolithic 
+  One NodeJS application connects to backend datastore. The default mode.
 * Micro-Service
+  Main NodeJS application , delegate authetication to the authorization service NodeJS application. Both connect to backedn datastore. Use AUTH_SERVICE environment variable to point to your authorization service host and port.
 
 
 ### Application Run Platforms
@@ -55,15 +62,22 @@
 		update account info
 	Logout	
 	
-## Note:
+	
+	
+## More on datastore configuration
 
 ### How dbtype is determined
 
-* Set environment variable dbtype to mongo or cloudant to determine which dbtype to use. The default mongo. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
-* All database configuration is defined in settings.json. When running on Bluemix, datasource url will be read from service binding information.
+* Set environment variable dbtype to mongo or cloudant to determine which dbtype to use. The default mongo. 
+* When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+
+### The datastore configuration
+
+* All datastore configuration is defined in settings.json.
+* When running on Bluemix, datasource url will be read from service binding information.
 * For CLoudant, you need to follow document/DDL/cloudant.ddl to create database and define search index.
-* To add new datasource types, create a folder under dataaccess with the new dbtype name. Look at current implementation for reference.
 
-### How to switch to different application mode
+### How to extend with more datasource types
 
-* set environment variable AUTH_SERVICE=host name:port, to point to the authentication micro-service. The default mode is Monolithic.
+* Create a folder under dataaccess with the new dbtype name. Look at current implementation for reference.
+
