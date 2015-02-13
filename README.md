@@ -1,5 +1,7 @@
 # Acme Air in NodeJS 
 
+A implementation of the Acme Air sample application for NodeJS.  This implementation can support multiple datastores, can run in several application modes, and can support running on a variety of runtime platforms including standalone bare metal  system, Virtual Machine, docker containers, IBM Bluemix, IBM Bluemix Container Service.
+
 ## Content
 
 ### Runtime Environment
@@ -9,22 +11,18 @@
 
 ### Datastore Choices
 
-Environment variable dbtype is used to determine the datastore choice. See under "More on datastore".
+Environment variable dbtype is used to determine the datastore choice. MongoDB is default. See under "More on configurations".
 
-datastore | dbtype value | Meaning
---- | --- | --- 
-[MongoDB](https://www.mongodb.org/downloads) | mongo | The default choice. Assume started on localhost:27017
-[Cloudant](https://cloudant.com) | cloudant | 
+* [MongoDB](https://www.mongodb.org/downloads) 
+* [Cloudant](https://cloudant.com) 
 
 
 ### Application Mode
 
-Environment variable AUTH_Service is use to determine when Micro-Service is used.
+Environment variable AUTH_SERVICE is use to determine when Micro-Service is used. Default is Monolitic. See under "More on configurations".
 
-application mode | AUTH_Service value | Meaning
---- | --- | --- 
-Monolithic | | One NodeJS application. The default mode.
-Micro-Service | host:port | Main NodeJS application delegates to authorization service NodeJS application hosted on host:port
+* Monolithic: One NodeJS application. The default mode.
+* Micro-Service: Main NodeJS application delegates to authorization service NodeJS application hosted on host:port, defined in AUTH_SERVICE
 
 
 ### Application Run Platforms
@@ -70,12 +68,14 @@ Assume MongoDB started on localhost:27017
 	
 	
 	
-## More on datastore
+## More on Configurations
 
-### How dbtype is determined
+### Environment Variables
 
-* Set environment variable dbtype to mongo or cloudant to determine which dbtype to use. The default mongo. 
-* When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+Name | Default | Meaning
+--- | --- | ---
+dbtype | mongo | You can switch betweeen mongo and cloudant for datastore choices. Default is MongoDB. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+AUTH_SERVICE |  | By default, there is only one main NodeJS application for all logics. When defined, in the format of host:port, it enables Micro-Service mode, main NodeJS application delegates to authorization service NodeJS application hosted on host:port. 
 
 
 ### Datastore Configuration for runtime
@@ -97,6 +97,7 @@ cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection t
 
 * When running on Bluemix, datasource url will be read from bound service information.
 * For CLoudant, you need to [follow](document/DDL/cloudant.ddl) to create database and define search index.
+
 
 ### Configuration for preload datastore
 
