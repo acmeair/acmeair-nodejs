@@ -1,6 +1,6 @@
 # Acme Air in NodeJS 
 
-A implementation of the Acme Air sample application for NodeJS.  This implementation can support multiple datastores, can run in several application modes, and can support running on a variety of runtime platforms including standalone bare metal  system, Virtual Machine, docker containers, IBM Bluemix, IBM Bluemix Container Service.
+An implementation of the Acme Air sample application for NodeJS.  This implementation can support multiple datastores, can run in several application modes, and can support running on a variety of runtime platforms including standalone bare metal  system, Virtual Machines, docker containers, IBM Bluemix, IBM Bluemix Container Service.
 
 ## Content
 
