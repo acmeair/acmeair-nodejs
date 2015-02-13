@@ -1,7 +1,7 @@
 ## Acmeair NodeJS on Docker 
 
 
-Assume Docker daemon is started.
+Assume you have [installed Docker and stared Docker daemon](https://docs.docker.com/installation/)
 
 ### Run MongoDB container
 
