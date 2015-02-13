@@ -11,23 +11,20 @@
 
 Environment variable dbtype is used to determine the datastore choice. See under "More on datastore configuration".
 
-datastore | dbtype value | is default 
---- | --- | --- |
-[MongoDB](https://www.mongodb.org/downloads) | mongo | yes
+datastore | dbtype value | Meaning
+--- | --- | --- 
+[MongoDB](https://www.mongodb.org/downloads) | mongo | The default choice
 [Cloudant](https://cloudant.com) | cloudant | 
 
 
 ### Application Mode
 
-#### Monolithic 
+Environment variable AUTH_Service is use to determine when Micro-Service is used.
 
-* One NodeJS application connects to backend datastore. The default mode.
-
-#### Micro-Service
-
-* Main NodeJS application which delegates authorization logic to the authorization service NodeJS application. 
-* Use AUTH_SERVICE environment variable to point to the service host and port.
-* Both applications connect to backend datastore. 
+application mode | AUTH_Service value | Meaning
+--- | --- | --- 
+Monolithic | | One NodeJS application connects to backend datastore. The default mode.
+Micro-Service | <host:port> | Main NodeJS application delegates to authorization service NodeJS application hosted on <host:port> 
 
 
 ### Application Run Platforms
@@ -81,8 +78,8 @@ datastore | dbtype value | is default
 
 ### The datastore configuration
 
-* All datastore configuration is defined in settings.json.
-* When running on Bluemix, datasource url will be read from service binding information.
+* All default datastore configuration is defined in settings.json.
+* When running on Bluemix, datasource url will be read from bound service information.
 * For CLoudant, you need to follow document/DDL/cloudant.ddl to create database and define search index.
 
 ### How to extend with more datasource types
