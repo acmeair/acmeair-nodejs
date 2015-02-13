@@ -79,7 +79,7 @@ Assume MongoDB started on localhost:27017
 
 Name | Default | Meaning
 --- | --- | ---
-dbtype | mongo | You can switch betweeen mongo and cloudant for datastore choices. Default is MongoDB. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+dbtype | mongo | You can switch betweeen mongo and cloudant for datastore choices. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 AUTH_SERVICE |  | By default, there is only one main NodeJS application for all logics. When defined, in the format of host:port, it enables Micro-Service mode, main NodeJS application delegates to authorization service NodeJS application hosted on host:port. 
 
 
