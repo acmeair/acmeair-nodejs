@@ -60,7 +60,10 @@ module.exports = function (settings) {
 	
 	function calculateDBConfig(){
 		var dbConfig ={};
-		dbConfig.contactPoints = process.env.CASSANDRA_CP || settings.cassandra_contactPoints;
+		if (process.env.CASSANDRA_CP)
+			dbConfig.contactPoints = JSON.parse(process.env.CASSANDRA_CP )
+		else
+			dbConfig.contactPoints = settings.cassandra_contactPoints;
 		dbConfig.keyspace = process.env.CASSANDRA_KS || settings.cassandra_keyspace || "acmeair_keyspace";
 		logger.info("Cassandra config:"+JSON.stringify(dbConfig));
 		return dbConfig;
