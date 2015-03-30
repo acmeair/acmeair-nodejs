@@ -19,7 +19,7 @@
 // 		insertOne(collname, doc, function(error, doc))
 // 		findOne(collname, _id value, function(error, doc))
 //		update(collname, doc, function(error, doc))
-//		remove(collname, _id value, function(error))
+//		remove(collname, condition as json of field and value, function(error))
 // 		findBy(collname, condition as json of field and value,function(err, docs))
 
 module.exports = function (settings) {
@@ -184,14 +184,14 @@ module.exports = function (settings) {
 		});
 	};
 
-	module.remove = function(collectionname,key, callback/* (error) */) {
+	module.remove = function(collectionname,condition, callback/* (error) */) {
 		dbclient.collection(collectionname,function(error, collection){
 			  if (error){
 				  logger.error("remove hit error:"+error);
 				  callback(error, null);
 			  }
 			  else{
-				collection.remove({_id: key}, {safe: true}, function(err, numDocs) {
+				collection.remove({_id: condition._id}, {safe: true}, function(err, numDocs) {
 					if (err) callback (err);
 					else callback(null);
 				});

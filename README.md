@@ -13,8 +13,9 @@ An implementation of the Acme Air sample application for NodeJS.  This implement
 
 Environment variable dbtype is used to determine the datastore choice. MongoDB is default. See under "More on configurations".
 
-* [MongoDB](https://www.mongodb.org/downloads) 
-* [Cloudant](https://cloudant.com) 
+* [MongoDB](http://www.mongodb.org) 
+* [Cloudant](http://cloudant.com) 
+* [Cassandra](http://cassandra.apache.org) 
 
 
 ### Application Mode
@@ -39,7 +40,7 @@ Main NodeJS application delegates to authorization service NodeJS application ho
 
 ## How to get started
 
-Assume MongoDB started on localhost:27017
+Assume MongoDB started on 127.0.0.1:27017
 
 ### Resolve module dependencies
 
@@ -79,7 +80,7 @@ Assume MongoDB started on localhost:27017
 
 Name | Default | Meaning
 --- | --- | ---
-dbtype | mongo | You can switch betweeen mongo and cloudant for datastore choices. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+dbtype | mongo | You can switch betweeen mongo|cloudant|cassandra for datastore choices. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 AUTH_SERVICE |  | By default, there is only one main NodeJS application for all logics. When defined, in the format of host:port, it enables Micro-Service mode, main NodeJS application delegates to authorization service NodeJS application hosted on host:port. 
 
 
@@ -92,13 +93,16 @@ Name | Default | Meaning
 mongoHost | 127.0.0.1 | MongoDB host ip
 mongoPort | 27017 | MongoDB port
 mongoConnectionPoolSize | 10 | MongoDB connection pool size
-cloudant_host| | Cloudant database url 
+cloudant_host| | Cloudant database host name 
+cloudant_port| 443 | Cloudant database port
 cloudant_username | | Cloudant database username/API key
 cloudant_password | | Cloudant database password
 cloudant_httpclient.maxTotal | 200 | Cloudant http client max connections
 cloudant_httpclient.maxPerRoute | 100 | Cloudant http client connections per route
 cloudant_httpclient.soTimeout | 5000 | Cloudant http client socket timeout
 cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection timeout
+cassandra_contactPoints||Cassandra contact points
+cassandra_keyspace|acmeair_keyspace|Cassandra keyspace
 
 * When running on Bluemix, datasource url will be read from bound service information.
 * For Cloudant, you need to [follow instruction here](document/DDL/cloudant.ddl) to create database and define search index.

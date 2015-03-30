@@ -20,7 +20,7 @@
 // 		insertOne(collname, doc, function(error, doc))
 // 		findOne(collname, _id value, function(error, doc))
 //		update(collname, doc, function(error, doc))
-//		remove(collname, _id value, function(error))
+//		remove(collname, condition as json of field and value, function(error))
 // 		findBy(collname, condition as json of field and value,function(err, docs))
 
 module.exports = function (settings) {
@@ -132,11 +132,11 @@ module.exports = function (settings) {
 		})
 	}
 
-    module.remove = function (collectionname, key, callback /* (error) */) {
-    	getRevision(nanoDBs[collectionname], key, function(err, revision){
+    module.remove = function (collectionname, condition, callback /* (error) */) {
+    	getRevision(nanoDBs[collectionname], condition._id, function(err, revision){
     		if (!err)
     		{
-    			nanoDBs[collectionname].destroy(key, revision, function(error, body) {
+    			nanoDBs[collectionname].destroy(condition._id, revision, function(error, body) {
     				callback(error);
     			});
     		}

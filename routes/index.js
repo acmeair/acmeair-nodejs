@@ -47,14 +47,14 @@ module.exports = function (dbtype, authService, settings) {
 		}
 		if (!sessionid || sessionid == '') {
 			logger.debug('checkForValidCookie - no sessionid cookie so returning 403');
-			res.send(403);
+			res.sendStatus(403);
 			return;
 		}
 	
 		validateSession(sessionid, function(err, customerid) {
 			if (err) {
 				logger.debug('checkForValidCookie - system error validating session so returning 500');
-				res.send(500);
+				res.sendStatus(500);
 				return;
 			}
 			
@@ -66,7 +66,7 @@ module.exports = function (dbtype, authService, settings) {
 			}
 			else {
 				logger.debug('checkForValidCookie - bad session so returning 403');
-				res.send(403);
+				res.sendStatus(403);
 				return;
 			}
 		});
@@ -87,7 +87,7 @@ module.exports = function (dbtype, authService, settings) {
 			}
 			
 			if (!customerValid) {
-				res.send(403);
+				res.sendStatus(403);
 			}
 			else {
 				createSession(login, function(error, sessionid) {
@@ -214,7 +214,7 @@ module.exports = function (dbtype, authService, settings) {
 	
 		getBookingsByUser(req.params.user, function(err, bookings) {
 			if (err) {
-				res.send(500);
+				res.sendStatus(500);
 			}
 			res.send(bookings);
 		});
@@ -225,7 +225,7 @@ module.exports = function (dbtype, authService, settings) {
 	
 		getCustomer(req.params.user, function(err, customer) {
 			if (err) {
-				res.send(500);
+				res.sendStatus(500);
 			}
 			res.send(customer);
 		});
@@ -236,7 +236,7 @@ module.exports = function (dbtype, authService, settings) {
 		
 		updateCustomer(req.params.user, req.body, function(err, customer) {
 			if (err) {
-				res.send(500);
+				res.sendStatus(500);
 			}
 			res.send(customer);
 		});
@@ -289,7 +289,7 @@ module.exports = function (dbtype, authService, settings) {
 			if (err) callback (err, null);
 			else{
 				if (now > session.timeoutTime) {
-					daraaccess.remove(module.dbNames.customerSessionName,sessionId, function(error) {
+					daraaccess.remove(module.dbNames.customerSessionName,{'_id':sessionId}, function(error) {
 						if (error) callback (error, null);
 						else callback(null, null);
 					});
@@ -318,7 +318,7 @@ module.exports = function (dbtype, authService, settings) {
 		    return;
 		}
 		  
-	    dataaccess.remove(module.dbNames.customerSessionName,sessionid,callback) 
+	    dataaccess.remove(module.dbNames.customerSessionName,{'_id':sessionid},callback) 
 	}
 
 
@@ -415,7 +415,7 @@ module.exports = function (dbtype, authService, settings) {
 	}
 
 	function cancelBooking(bookingid, userid, callback /*(error)*/) {
-		dataaccess.remove(module.dbNames.bookingName,bookingid, callback)
+		dataaccess.remove(module.dbNames.bookingName,{'_id':bookingid, 'customerId':userid}, callback)
 	}
 
 	return module;

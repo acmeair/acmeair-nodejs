@@ -112,7 +112,7 @@ else
 
 
 function checkStatus(req, res){
-	res.send(200);
+	res.sendStatus(200);
 }
 
 function login(req, res){
@@ -120,7 +120,7 @@ function login(req, res){
      {
 		logger.info("please wait for db connection initialized then trigger again.");
 		initDB();
-		res.send(403);
+		res.sendStatus(403);
 	}else
 		routes.login(req, res);
 }
@@ -130,7 +130,7 @@ function logout(req, res){
      {
 		logger.info("please wait for db connection initialized then trigger again.");
 		initDB();
-		res.send(400);
+		res.sendStatus(400);
 	}else
 		routes.logout(req, res);
 }
@@ -141,7 +141,7 @@ function startLoadDatabase(req, res){
      	{
 		logger.info("please wait for db connection initialized then trigger again.");
 		initDB();
-		res.send(400);
+		res.sendStatus(400);
 	}else
 		loader.startLoadDatabase(req, res);
 }

@@ -1,6 +1,6 @@
 {
   "name": "acmeair",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -22,6 +22,7 @@
     "csv": "0.2.4",
     "log4js": "0.6.12",
     "ttl-lru-cache": "0.0.2",
-    "nano":"5.10.x"
+    "nano":"5.10.x",
+    "cassandra-driver":"2.0.x"
   }
 }
