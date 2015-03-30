@@ -80,9 +80,12 @@ Assume MongoDB started on 127.0.0.1:27017
 
 Name | Default | Meaning
 --- | --- | ---
-dbtype | mongo | You can switch betweeen mongo|cloudant|cassandra for datastore choices. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
+dbtype | mongo | You can switch between mongo,cloudant,cassandra for datastore choices. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 AUTH_SERVICE |  | By default, there is only one main NodeJS application for all logics. When defined, in the format of host:port, it enables Micro-Service mode, main NodeJS application delegates to authorization service NodeJS application hosted on host:port. 
-
+MONGO_URL||Mongo database URL. Take precedence over other settings
+CLOUDANT_URL||Cloudant database URL. Take precedence over other settings
+CASSANDRA_CP||Cassandra Contact Points. Take precedence over other settings
+CASSANDRA_KS||Cassandra keyspace. Take precedence over other settings
 
 ### Configuration for Runtime
 
@@ -104,8 +107,10 @@ cloudant_httpclient.connectionTimeout | 5000 | Cloudant http client connection t
 cassandra_contactPoints||Cassandra contact points
 cassandra_keyspace|acmeair_keyspace|Cassandra keyspace
 
+
 * When running on Bluemix, datasource url will be read from bound service information.
-* For Cloudant, you need to [follow instruction here](document/DDL/cloudant.ddl) to create database and define search index.
+* For Cloudant, you need to [follow instruction](document/DDL/cloudant.ddl) to create database and define search index.
+* For Cassandra, you need to [follow instruction](document/DDL/cassandra.ddl) to create keyspace and tables.
 
 
 ### Configuration for Preload
