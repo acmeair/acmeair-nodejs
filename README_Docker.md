@@ -52,7 +52,7 @@ Assume you have [installed Docker and stared Docker daemon](https://docs.docker.
 
 	docker build -t acmeair/workload document/workload
 
-### Run Jmeter workload against a Acme Air runtime
+### Run Jmeter workload against Acme Air runtime
 
 	docker run -i -t -e APP_PORT_9080_TCP_ADDR=<the ip> -e APP_PORT_9080_TCP_PORT=<the port> acmeair/workload
 	
