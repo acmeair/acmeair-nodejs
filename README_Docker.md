@@ -46,3 +46,17 @@ Assume you have [installed Docker and stared Docker daemon](https://docs.docker.
 * For Cloudant, you can use CLOUDANT_URL for datasource location
 
 
+## Run Jmeter workload on Docker 
+
+### Create a docker image for Jmeter workload
+
+	docker build -t acmeair/workload document/workload
+
+### Run Jmeter workload against a Acme Air runtime
+
+	docker run -i -t -e APP_PORT_9080_TCP_ADDR=<the ip> -e APP_PORT_9080_TCP_PORT=<the port> acmeair/workload
+	
+	or
+	
+	docker run -i -t --link acmeair_web_001:app acmeair/workload
+	
