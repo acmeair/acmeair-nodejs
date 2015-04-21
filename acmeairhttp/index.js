@@ -14,9 +14,13 @@
 * limitations under the License.
 *******************************************************************************/
 
-module.exports = function (location, contextRoot, settings) {
+module.exports = function (settings) {
     var module = {};
     var http = require('http')
+
+    var contextRoot = settings.authContextRoot || "/acmeair-auth-service/rest/api"
+	var location = process.env.AUTH_SERVICE;
+	
     var hostAndPort = location.split(":");
 
 	var log4js = require('log4js');

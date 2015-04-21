@@ -23,6 +23,8 @@
     "log4js": "0.6.12",
     "ttl-lru-cache": "0.0.2",
     "nano":"5.10.x",
-    "cassandra-driver":"2.0.x"
+    "cassandra-driver":"2.0.x",
+    "stats-lite":"1.0.3",
+    "circuit-breaker":"0.0.4"
   }
 }

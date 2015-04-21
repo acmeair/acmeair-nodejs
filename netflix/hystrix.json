@@ -1,0 +1,8 @@
+{
+ "hystrix": {
+    "refreshInterval": 500,
+    "rollingStatisticalWindowInMilliseconds": 5000,
+    "stream":{"maxConcurrentConnections":5},
+    "circuitBreaker":{"maxFailures":10, "callTimeoutInMilliseconds":10000, "resetTimeoutInMilliseconds":10000}
+ }
+}

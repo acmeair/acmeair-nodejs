@@ -33,14 +33,29 @@ Assume you have [installed Docker and stared Docker daemon](https://docs.docker.
 		
 	docker run -d -P --name acmeair_web_004 -e AUTH_SERVICE=192.168.59.103:49187 --link mongo_001:mongo acmeair/web 
 
-	or use the MONGO_URL location as above
+	You can also use the MONGO_URL location as Monolithic case
 
+
+### Run Acmeair Containers in Micro-Service with Netflix Hystrix Stream enabled
+
+	docker run -d -P --name acmeair_web_005 -e APP_NAME=authservice_app.js --link mongo_001:mongo acmeair/web 
+	
+	docker ps
+		to get mapped port for 9443 , e.g. 49187
+		
+	docker run -d -P --name acmeair_web_006 -e AUTH_SERVICE=192.168.59.103:49187 -e enableHystrix=true --link mongo_001:mongo acmeair/web 
+	
+	You can also use the MONGO_URL location as Monolithic case
+	
 
 #### Get application port
 
 	docker ps
 		get the mapped port for 9080 to get the application url. e.g. http://192.168.59.103:49178
 
+	If hystrix is enabled, it is available at : http://192.168.59.103:49178/rest/api/hystrix.stream
+
+	
 #### Note:
 
 * For Cloudant, you can use CLOUDANT_URL for datasource location

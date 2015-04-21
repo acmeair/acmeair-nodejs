@@ -29,14 +29,23 @@ var host = (process.env.VCAP_APP_HOST || 'localhost');
 
 logger.info("host:port=="+host+":"+port);
 
-var authServiceLocation= process.env.AUTH_SERVICE;
-
 var authService;
-if (authServiceLocation ) // assuming it is the location of authservice 
+var authServiceLocation = process.env.AUTH_SERVICE;
+if (authServiceLocation) 
 {
-	var authContextRoot = settings.authContextRoot || "/acmeair-auth-service/rest/api"
-	authService = new require('./acmeairhttp/index.js')(authServiceLocation, authContextRoot, settings);
-	logger.info("external authservice:"+authServiceLocation);
+	logger.info("Use authservice:"+authServiceLocation);
+	var authModule;
+	if (authServiceLocation.indexOf(":")>0) // This is to use micro services
+		authModule = "acmeairhttp";
+	else
+		authModule= authServiceLocation;
+	
+	authService = new require('./'+authModule+'/index.js')(settings);
+	if (authService && "true"==process.env.enableHystrix) // wrap into command pattern
+	{
+		logger.info("Enabled Hystrix");
+		authService = new require('./acmeaircmd/index.js')(authService, settings);
+	}
 }
 
 var dbtype = process.env.dbtype || "mongo";
@@ -93,6 +102,10 @@ router.get('/customer/byid/:user', routes.checkForValidSessionCookie, routes.get
 router.post('/customer/byid/:user', routes.checkForValidSessionCookie, routes.putCustomerById);
 router.get('/loaddb', startLoadDatabase);
 router.get('/checkstatus', checkStatus);
+
+if (authService && authService.hystrixStream)
+	app.get('/rest/api/hystrix.stream', authService.hystrixStream);
+
 
 //REGISTER OUR ROUTES so that all of routes will have prefix 
 app.use(settings.contextRoot, router);

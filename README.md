@@ -57,10 +57,19 @@ Assume MongoDB started on 127.0.0.1:27017
 	set AUTH_SERVICE=localhost:9443 or export AUTH_SERVICE=localhost:9443
 	node app.js
 	
+### Run Acmeair in Micro-Service with Netflix Hystrix Stream enabled on Local
+
+	node authservice-app.js
+	set AUTH_SERVICE=localhost:9443 or export AUTH_SERVICE=localhost:9443
+	set enableHystrix=true or export enableHystrix=true
+	
+	node app.js
+	
 	
 ### Access Application 
 
 	http://localhost:9080/
+	
 	Load Database 
 		preload 10k customers uid[0..9999]@email.com:password, 5 days' flights.  Defined in loader/loader-settings.json
 	Login
@@ -72,6 +81,8 @@ Assume MongoDB started on 127.0.0.1:27017
 		update account info
 	Logout	
 	
+	If hystrix is enabled, it is available at : http://localhost:9080/rest/api/hystrix.stream
+	
 	
 	
 ## More on Configurations
@@ -82,6 +93,7 @@ Name | Default | Meaning
 --- | --- | ---
 dbtype | mongo | You can switch between mongo,cloudant,cassandra for datastore choices. When running on Bluemix, dbtype is automactially discovered from the service the application is bound to.
 AUTH_SERVICE |  | By default, there is only one main NodeJS application for all logics. When defined, in the format of host:port, it enables Micro-Service mode, main NodeJS application delegates to authorization service NodeJS application hosted on host:port. 
+enableHystrix | false | setting it to true will enable hystrix stream available at /rest/api/hystrix.stream
 MONGO_URL||Mongo database URL. Take precedence over other settings
 CLOUDANT_URL||Cloudant database URL. Take precedence over other settings
 CASSANDRA_CP||Cassandra Contact Points. Take precedence over other settings
