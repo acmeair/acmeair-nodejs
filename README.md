@@ -8,7 +8,6 @@ An implementation of the Acme Air sample application for NodeJS.  This implement
 
 [NodeJs](http://nodejs.org/download/)
 
-
 ### Datastore Choices
 
 Environment variable dbtype is used to determine the datastore choice. MongoDB is default. See under "More on configurations".
