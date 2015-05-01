@@ -17,7 +17,6 @@ Environment variable dbtype is used to determine the datastore choice. MongoDB i
 * [Cloudant](http://cloudant.com) 
 * [Cassandra](http://cassandra.apache.org) 
 
-
 ### Application Mode
 
 Environment variable AUTH_SERVICE is use to determine when Micro-Service is used. Default is Monolitic. See under "More on configurations".
