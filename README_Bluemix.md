@@ -6,7 +6,7 @@ Assume you have access to [Bluemix](https://console.ng.bluemix.net).
 	
 	cf login
 
-### Run Acmeair Container in Monolithic
+### Run Acmeair in Monolithic mode
 
 
 #### Push Application
@@ -40,3 +40,30 @@ Cloudant:
 	cf start acmeair-nodejs
 	
 	http://acmeair-nodejs.mybluemix.net	
+
+
+### Run Acmeair in Microservices mode
+
+#### You must first deploy the Acmeair in Monolithic mode before proceeding.
+
+#### Push the authentication service
+
+	cf push acmeair-authservice --no-start -c "node authservice-app.js"
+
+#### Now that the authentication service is running, you can configure the web application to use it by setting the following user defined environment variable stopping the application first
+
+
+	cf stop acmeair-nodejs
+	cf set-env acmeair-nodejs AUTH_SERVICE acmeair-authservice.mybluemix.net:80
+
+#### Enable Hystrix by setting the following user defined environment variable
+
+	cf set-env acmeair-nodejs enableHystrix true
+
+#### Now start the authentication service and the web application
+
+
+	cf start acmeair-authservice
+	cf start acmeair-nodejs
+
+	Now go to http://acmeair-nodejs.mybluemix.net and login. That login uses the authentication microservice.
