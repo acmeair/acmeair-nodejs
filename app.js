@@ -59,6 +59,8 @@ if(process.env.VCAP_SERVICES){
 		dbtype="cloudant";
 	else if (serviceKey && serviceKey.indexOf('redis')>-1)
 		dbtype="redis";
+	else if (serviceKey && serviceKey.indexOf('DataCache-1.0')>-1)
+		dbtype="wcf";
 }
 logger.info("db type=="+dbtype);
 
