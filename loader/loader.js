@@ -128,21 +128,35 @@ module.exports = function (loadUtil,settings) {
 	}
 
 	module.startLoadDatabase = function startLoadDatabase(req, res) {
-		if (customers.length>=loaderSettings.MAX_CUSTOMERS)
+		if (customers.length>=1)
 	      {
 			res.send('Already loaded');
 			return;
 	      }
+		var numCustomers = req.query.numCustomers;
+		if(numCustomers === undefined) {
+			numCustomers = loaderSettings.MAX_CUSTOMERS;
+		}
 		logger.info('starting loading database');
-			createCustomers();
+			createCustomers(numCustomers);
 			createFlightRelatedData(function() {
 				logger.info('number of customers = ' + customers.length);
 				logger.info('number of airportCodeMappings = ' + airportCodeMappings.length);
 				logger.info('number of flightSegments = ' + flightSegments.length);
 				logger.info('number of flights = ' + flights.length);
+				flightQueue.drain = function() {
+					logger.info('all flights loaded');
+					logger.info('ending loading database');
+					res.send('Database Finished Loading');
+				};
 				customerQueue.push(customers);
 			});
-		res.send('Trigger DB loading');
+		//res.send('Trigger DB loading');
+	}
+	
+	module.getNumConfiguredCustomers = function (req, res) {
+		res.contentType("text/plain");
+		res.send(loaderSettings.MAX_CUSTOMERS.toString());
 	}
 
 
@@ -165,10 +179,10 @@ module.exports = function (loadUtil,settings) {
 	}
 	
 	var flightQueue = async.queue(insertFlight, DATABASE_PARALLELISM);
-	flightQueue.drain = function() {
-		logger.info('all flights loaded');
-		logger.info('ending loading database');
-	}
+	//flightQueue.drain = function() {
+	//	logger.info('all flights loaded');
+	//	logger.info('ending loading database');
+	//}
 	
 	
 	var customers = new Array();
@@ -176,8 +190,8 @@ module.exports = function (loadUtil,settings) {
 	var flightSegments = new Array();
 	var flights = new Array();
 	
-	function createCustomers() {
-		for (var ii = 0; ii < loaderSettings.MAX_CUSTOMERS; ii++) {
+	function createCustomers(numCustomers) {
+		for (var ii = 0; ii < numCustomers; ii++) {
 			var customer = cloneObjectThroughSerialization(customerTemplate);
 			customer._id = "uid" + ii + "@email.com";
 			customers.push(customer);
