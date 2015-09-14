@@ -21,6 +21,7 @@
 //		update(collname, doc, function(error, doc))
 //		remove(collname, condition as json of field and value, function(error))
 // 		findBy(collname, condition as json of field and value,function(err, docs))
+//		count(collname, condition as json of field and value, function(error, count))
 
 module.exports = function (settings) {
     var module = {};
@@ -209,6 +210,21 @@ module.exports = function (settings) {
 				collection.find(condition).toArray(function(err, docs) {
 					if (err) callback (err, null);
 					else callback(null, docs);
+				});
+			  }
+		});
+	};
+	
+	module.count = function(collectionname, condition, callback/* (error, docs) */) {
+		dbclient.collection(collectionname,function(error, collection){
+			  if (error){
+				  logger.error("count hit error:"+error);
+				  callback(error, null);
+			  }
+			  else{
+				collection.count(condition, function (err, count) {
+					if (err) callback (err, null);
+					else callback(null, count);
 				});
 			  }
 		});

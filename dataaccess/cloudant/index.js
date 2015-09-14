@@ -22,6 +22,7 @@
 //		update(collname, doc, function(error, doc))
 //		remove(collname, condition as json of field and value, function(error))
 // 		findBy(collname, condition as json of field and value,function(err, docs))
+//		TODO: count(collname, condition as json of field and value, function(error, count))
 
 module.exports = function (settings) {
     var module = {};
@@ -173,6 +174,11 @@ module.exports = function (settings) {
 		return docs;
 	}
 
+	//TODO Implement count method for cloudant -- currently a stub returning -1
+	module.count = function(collectionname, condition, callback/* (error, docs) */) {
+		callback(null, -1);
+	};
+	
 	return module;
 	
 }

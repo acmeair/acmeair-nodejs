@@ -153,6 +153,12 @@ footer p {
   padding: 0 0 10px 0;
 }
 
+.base-footer {
+	width: 930px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #grid {
 	width: 800px;
 	height: 400px;

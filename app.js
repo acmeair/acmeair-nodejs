@@ -59,6 +59,8 @@ if(process.env.VCAP_SERVICES){
 		dbtype="cloudant";
 	else if (serviceKey && serviceKey.indexOf('redis')>-1)
 		dbtype="redis";
+	else if (serviceKey && serviceKey.indexOf('DataCache-1.0')>-1)
+		dbtype="wcf";
 }
 logger.info("db type=="+dbtype);
 
@@ -100,7 +102,18 @@ router.post('/bookings/cancelbooking', routes.checkForValidSessionCookie, routes
 router.get('/bookings/byuser/:user', routes.checkForValidSessionCookie, routes.bookingsByUser);
 router.get('/customer/byid/:user', routes.checkForValidSessionCookie, routes.getCustomerById);
 router.post('/customer/byid/:user', routes.checkForValidSessionCookie, routes.putCustomerById);
-router.get('/loaddb', startLoadDatabase);
+router.get('/config/runtime', routes.getRuntimeInfo);
+router.get('/config/dataServices', routes.getDataServiceInfo);
+router.get('/config/activeDataService', routes.getActiveDataServiceInfo);
+router.get('/config/countBookings', routes.countBookings);
+router.get('/config/countCustomers', routes.countCustomer);
+router.get('/config/countSessions', routes.countCustomerSessions);
+router.get('/config/countFlights', routes.countFlights);
+router.get('/config/countFlightSegments', routes.countFlightSegments);
+router.get('/config/countAirports' , routes.countAirports);
+//router.get('/loaddb', startLoadDatabase);
+router.get('/loader/load', startLoadDatabase);
+router.get('/loader/query', loader.getNumConfiguredCustomers);
 router.get('/checkstatus', checkStatus);
 
 if (authService && authService.hystrixStream)

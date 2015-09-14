@@ -29,6 +29,14 @@ function hideLoginWaitDialog() {
 	dijit.byId('loginWaitDialog').hide();
 }
 
+function showWaitDialog() {
+	dijit.byId('waitDialog').show();
+}
+
+function hideWaitDialog() {
+	dijit.byId('waitDialog').hide();
+}
+
 function updateLoggedInUserWelcome() {
 	var loggedinuser = dojo.cookie("loggedinuser");
 	if (loggedinuser == null) {
