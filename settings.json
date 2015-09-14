@@ -20,10 +20,6 @@
 
 	"cassandra_contactPoints" : ["your ip"],
 	"cassandra_keyspace" : "acmeair_keyspace",
-	
-	"wcfds_rest_url": "http://localhost/resources/datacaches/data1",
-	"wcfds_username": "your username",
-	"wcfds_password": "your password",
 
 	"useFlightDataRelatedCaching" : true,
 	
